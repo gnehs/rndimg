@@ -41,6 +41,19 @@ html
 								.control
 									input.input(type='text', :value="item.url.data" ,readonly)
 								p.help 以 json 格式提供圖片的標題、簡介、版權聲明等內容
+		footer.footer
+			.container
+				.columns
+					.column.is-narrow
+							p
+								strong Rndimg
+								|  by 
+								a(href='https://gnehs.net') gnehs
+								| . The source code is licensed
+								a(href='https://github.com/gnehs/rndimg/blob/master/LICENSE')  MIT
+					.column.has-text-right
+						a(href='https://github.com/gnehs/rndimg') GitHub
+
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
 		script(src="./js/index.min.js")
 
