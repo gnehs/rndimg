@@ -9,7 +9,6 @@ let defaultData = {
     src: "https://bing.com/th?id=OHR.LeatherbackTT_ROW0614606094_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp",
     updateTime: new Date()
 }
-let data = defaultData
 async function fetchData(lang = 'en-US') {
     try {
         let d = {}
