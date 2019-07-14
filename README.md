@@ -9,8 +9,11 @@ npm start
 ```
 ## 如何使用
 GET `/` - 可供預覽來源圖片的首頁
+
 GET `/api` - 取得所有圖片來源的名稱、簡介及相關網址
+
 GET `/api/<source>` - 取得圖片資料
+
 GET `/api/<source>/src` - 轉址到圖片位置
 ## 撰寫 module
 撰寫完成後丟到 `modules` 資料夾即可使用
