@@ -16,25 +16,25 @@ fs.readdir(__dirname + "/modules", (err, files) => {
             let moduleData = {
                 name: _module.name,
                 description: _module.description,
-                url: { src: `/src/${shortURL}` }
+                url: { src: `/api/${shortURL}/src` }
             };
             let enabled = await _module._init()
             if ('getImgData' in _module)
-                moduleData.url.data = `/data/${shortURL}`
+                moduleData.url.data = `/api/${shortURL}`
             if (enabled) {
                 moduleList[shortURL] = moduleData;
                 // set router
-                router.get(`/src/${shortURL}`, async ctx => ctx.redirect(await _module.getImgSrc()))
-                router.get(`/data/${shortURL}`, async ctx => ctx.body = await _module.getImgData())
+                router.get(`/api/${shortURL}/src`, async ctx => ctx.redirect(await _module.getImgSrc()))
+                router.get(`/api/${shortURL}`, async ctx => ctx.body = await _module.getImgData())
             }
         }
     });
 });
 
-router.get('/', async ctx => {
-    ctx.body = moduleList
-})
+router.get('/api', async ctx => ctx.body = moduleList)
 
+app.use(require('@koa/cors')());
+app.use(require('koa-static')(__dirname + '/public'));
 app.use(router.routes())
 app.listen(3000, () => {
     console.log("http://localhost:3000");

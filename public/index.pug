@@ -1,0 +1,46 @@
+doctype html
+html
+	head
+		title rndimg
+		meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+		meta(charset='utf-8')
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Lobster&display=swap', rel='stylesheet')
+		link(href='/css/rndimg.css', rel='stylesheet')
+		//-script(src='./js/navigo.min.js')
+	body
+		//-nav.navbar(role='navigation', aria-label='main navigation')
+			.container
+				a.brand.navbar-item(style="font-size: 24px")
+					p Rndimg
+				a.navbar-item 首頁
+				a.navbar-item 文件
+		section.hero.is-primary.is-bold
+			.hero-body
+				.container
+					h1.title.brand Rndimg
+					h2.subtitle 給你滿滿美圖的好朋友
+		#container.container
+			.columns.is-multiline(v-show="imgsources")
+				.column.is-one-third-desktop(v-for="(item, index) in imgsources",:key="index")
+					.card
+						.card-image
+							figure.image.is-3by1(:style="`background-image: url('${item.url.src}')`")
+						.card-content
+							.media
+								.media-content
+									p.title.is-4 {{item.name}}
+									p.subtitle.is-6 {{item.description}}
+							.field
+								label.label 圖片網址
+								.control
+									input.input(type='text', :value="item.url.src" ,readonly)
+								p.help 直接連結到圖片位置
+							.field
+								label.label API 網址
+								.control
+									input.input(type='text', :value="item.url.data" ,readonly)
+								p.help 以 json 格式提供圖片的標題、簡介、版權聲明等內容
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
+		script(src="./js/index.min.js")
+

@@ -9,7 +9,7 @@ let defaultData = {
     updateTime: new Date()
 }
 let data = defaultData
-let fetchNewData = schedule.scheduleJob('* /12 * * *', async () => {
+schedule.scheduleJob('* /12 * * *', async () => {
     data = await fetchData()
 });
 async function fetchData(lang = 'en-US') {
