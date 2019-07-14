@@ -1,6 +1,7 @@
-const cheerio = require('cheerio')
-    , rp = require('request-promise')
-    , schedule = require('node-schedule')
+/*
+    Bing-lib for bing-*.js
+*/
+const rp = require('request-promise')
 let defaultData = {
     title: "Leatherback sea turtles in Trinidad and Tobago",
     description: "",
@@ -9,9 +10,6 @@ let defaultData = {
     updateTime: new Date()
 }
 let data = defaultData
-schedule.scheduleJob('* /12 * * *', async () => {
-    data = await fetchData()
-});
 async function fetchData(lang = 'en-US') {
     try {
         let d = {}
@@ -27,22 +25,8 @@ async function fetchData(lang = 'en-US') {
         console.error(e); return false
     }
 }
-async function getImgSrc() {
-    return data.src
-}
-async function getImgData() {
-    return data
-}
-async function _init() {
-    data = await fetchData()
-    return data
-}
 module.exports = {
-    name: "Bing 每日圖片",
-    description: "Bing Daily Images",
-    getImgSrc,
-    getImgData,
-    _init,
+    _init: () => false,
     defaultData,
     fetchData
 }

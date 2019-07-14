@@ -1,4 +1,4 @@
-const bing = require('./bing')
+const bing = require('./bing-lib')
 const schedule = require('node-schedule')
 schedule.scheduleJob('* /12 * * *', () => fetchData());
 let data = bing.defaultData
